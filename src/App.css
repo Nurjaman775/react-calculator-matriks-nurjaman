@@ -1,0 +1,157 @@
+/* Gaya untuk seluruh halaman */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle, #0f2027, #203a43, #2c5364);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Root container */
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Container utama */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  animation: fadeIn 1s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Judul */
+h1 {
+  font-size: 3rem;
+  color: #f8f8f8;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+}
+
+/* Wrapper untuk matriks */
+.matrices-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 1rem;
+  gap: 1.5rem;
+}
+
+.matrix {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matrix h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.matrix-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  width: 60px;
+  height: 50px;
+  margin: 0.3rem;
+  text-align: center;
+  font-size: 1.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: transparent; /* Awalnya transparan */
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+input:focus {
+  color: white; /* Warna teks terlihat saat fokus */
+  border-color: #50c9c3;
+  box-shadow: 0 0 15px rgba(80, 201, 195, 0.8);
+}
+
+input:valid {
+  color: white; /* Warna teks terlihat jika ada angka valid */
+}
+
+/* Tombol */
+button {
+  background: linear-gradient(to right, #50c9c3, #96deda);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  margin: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: linear-gradient(to right, #96deda, #50c9c3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Hasil matriks */
+.result {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.result input {
+  background: rgba(255, 255, 255, 0.2);
+  color: transparent; /* Awalnya transparan */
+  font-weight: bold;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+}
+
+.result input:valid {
+  color: #50c9c3; /* Warna terlihat jika ada angka valid */
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container,
+button,
+input {
+  animation: fadeIn 1.2s ease;
+}
