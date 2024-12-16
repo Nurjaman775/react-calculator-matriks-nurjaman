@@ -2,42 +2,55 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [matrixA, setMatrixA] = useState([[0, 0], [0, 0]]);
-  const [matrixB, setMatrixB] = useState([[0, 0], [0, 0]]);
-  const [result, setResult] = useState([[0, 0], [0, 0]]);
+  const [matrixA, setMatrixA] = useState([
+    ["", ""],
+    ["", ""],
+  ]);
+  const [matrixB, setMatrixB] = useState([
+    ["", ""],
+    ["", ""],
+  ]);
+  const [result, setResult] = useState([
+    ["", ""],
+    ["", ""],
+  ]);
 
   const handleInputChange = (e, matrix, setMatrix, row, col) => {
+    const value = e.target.value === "" ? "" : e.target.value; // Biarkan input kosong
     const newMatrix = matrix.map((r) => [...r]);
-    newMatrix[row][col] = Number(e.target.value);
+    newMatrix[row][col] = value;
     setMatrix(newMatrix);
   };
 
   const addMatrices = () => {
     const newResult = matrixA.map((row, i) =>
-      row.map((val, j) => val + matrixB[i][j])
+      row.map((val, j) => (Number(val) || 0) + (Number(matrixB[i][j]) || 0))
     );
-    setResult(newResult);
+    setResult(newResult.map((row) => row.map((val) => val.toString())));
   };
 
   const subtractMatrices = () => {
     const newResult = matrixA.map((row, i) =>
-      row.map((val, j) => val - matrixB[i][j])
+      row.map((val, j) => (Number(val) || 0) - (Number(matrixB[i][j]) || 0))
     );
-    setResult(newResult);
+    setResult(newResult.map((row) => row.map((val) => val.toString())));
   };
 
   const multiplyMatrices = () => {
+    const a = matrixA.map((row) => row.map((val) => Number(val) || 0));
+    const b = matrixB.map((row) => row.map((val) => Number(val) || 0));
+
     const newResult = [
       [
-        matrixA[0][0] * matrixB[0][0] + matrixA[0][1] * matrixB[1][0],
-        matrixA[0][0] * matrixB[0][1] + matrixA[0][1] * matrixB[1][1],
+        a[0][0] * b[0][0] + a[0][1] * b[1][0],
+        a[0][0] * b[0][1] + a[0][1] * b[1][1],
       ],
       [
-        matrixA[1][0] * matrixB[0][0] + matrixA[1][1] * matrixB[1][0],
-        matrixA[1][0] * matrixB[0][1] + matrixA[1][1] * matrixB[1][1],
+        a[1][0] * b[0][0] + a[1][1] * b[1][0],
+        a[1][0] * b[0][1] + a[1][1] * b[1][1],
       ],
     ];
-    setResult(newResult);
+    setResult(newResult.map((row) => row.map((val) => val.toString())));
   };
 
   const renderMatrix = (matrix, setMatrix) =>
